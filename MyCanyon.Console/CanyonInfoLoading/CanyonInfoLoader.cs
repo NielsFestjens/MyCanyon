@@ -21,7 +21,7 @@ namespace MyCanyon.Console.CanyonInfoLoading
             await CanyonFetcher.FetchCanyons(config.DescentecanyonJson, config.CsvPath);
 
             var canyonCsvs = CanyonCsvLoader.ReadCanyons(config.CsvPath);
-            var canyonInfos = CanyonPointsFetcher.FetchCanyonPoints(canyonCsvs, config.DescentecanyonMapTemplate, config.PointPathTemplate);
+            var canyonInfos = CanyonInfoFetcher.FetchCanyonInfo(canyonCsvs, config);
             CanyoninInfoJsonLoader.Save(canyonInfos, config.JsonPath);
         }
     }
