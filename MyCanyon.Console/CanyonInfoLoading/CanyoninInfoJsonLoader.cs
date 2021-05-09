@@ -15,5 +15,10 @@ namespace MyCanyon.Console.CanyonInfoLoading
         {
             File.WriteAllText(path, JsonConvert.SerializeObject(canyonInfos));
         }
+
+        public static void Save(List<CanyonInfoLight> canyonInfos, string path)
+        {
+            File.WriteAllText(path, JsonConvert.SerializeObject(canyonInfos));
+        }
     }
 }

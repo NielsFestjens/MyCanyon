@@ -1,0 +1,93 @@
+/* https://csslayout.io/patterns/sidebar */
+
+:root {
+    --folder-structure-item-height: 1rem;
+    --folder-structure-item-margin-left: 2rem;
+    --folder-structure-item-padding-top: 1rem;
+}
+
+.sidebar-container {
+    display: flex;
+}
+
+.sidebar-container .sidebar {
+    width: 400px;
+}
+
+.sidebar-container .main {
+    flex: 1;
+    overflow: auto;
+}
+
+/* https://csslayout.io/patterns/folder-structure */
+
+.folder-structure ul {
+    list-style-type: none;
+    margin: 0;
+    padding-inline-start: 35px;
+}
+
+.folder-structure li {
+    padding: var(--folder-structure-item-padding-top) 0rem 0rem 0rem;
+    position: relative;
+}
+
+.folder-structure li::before {
+    border-left: 1px solid rgba(0, 0, 0, .3);
+    content: '';
+    left: 0;
+    position: absolute;
+    top: 0;
+    transform: translate(calc(-1 * var(--folder-structure-item-margin-left)), 0);
+
+    height: 100%;
+}
+
+.folder-structure li::after {
+    border-bottom: 1px solid rgba(0, 0, 0, .3);
+    content: '';
+    left: 0;
+    position: absolute;
+    top: calc(var(--folder-structure-item-padding-top) + var(--folder-structure-item-height) / 2);
+    transform: translate(-100%, 0);
+
+    width: var(--folder-structure-item-margin-left);
+}
+
+.folder-structure li:last-child::before {
+    height: calc(var(--folder-structure-item-padding-top) + var(--folder-structure-item-height) / 2);
+}
+
+/* https://csslayout.io/patterns/card-layout */
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -8px;
+    margin-right: -8px;
+}
+
+.cards div {
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+/* https://csslayout.io/patterns/full-screen-menu */
+
+.popup-container {
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.popup-container .close {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+}

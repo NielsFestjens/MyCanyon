@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace MyCanyon.Console.CanyonInfoLoading
@@ -23,6 +24,9 @@ namespace MyCanyon.Console.CanyonInfoLoading
             var canyonCsvs = CanyonCsvLoader.ReadCanyons(config.CsvPath);
             var canyonInfos = CanyonInfoFetcher.FetchCanyonInfo(canyonCsvs, config);
             CanyoninInfoJsonLoader.Save(canyonInfos, config.JsonPath);
+
+            var canyonInfosLight = canyonInfos.Select(x => new CanyonInfoLight(x)).ToList();
+            CanyoninInfoJsonLoader.Save(canyonInfosLight, config.JsonPathLight);
         }
     }
 }

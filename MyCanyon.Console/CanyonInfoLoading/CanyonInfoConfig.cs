@@ -6,15 +6,16 @@ namespace MyCanyon.Console.CanyonInfoLoading
     {
         public double CenterX = 45.310360;
         public double CenterY = 7.534647;
-        public int Amount = 100;
+        public int Amount = int.MaxValue;
         public List<string> OwnedBooks = new List<string>
         {
             "/canyoning/topoguide/1232/topoguide.html",
             "/boutique/produit/135/Canyoning-Nord-Italia.html"
         };
 
-        public string RootDirectory => "D:\\from C\\temp\\canyons";
+        public string RootDirectory => "D:\\from C\\temp\\canyons2";
         public string JsonPath => $"{RootDirectory}\\canyons.json";
+        public string JsonPathLight => $"{RootDirectory}\\canyons-light.json";
         public string CsvPath => $"{RootDirectory}\\canyons.csv";
         public string PointPathTemplate => $"{RootDirectory}\\{{0}}-points.csv";
         public string ResumePathTemplate => $"{RootDirectory}\\{{0}}-resume.json";

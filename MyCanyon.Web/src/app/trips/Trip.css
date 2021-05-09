@@ -1,0 +1,11 @@
+.trip-wrapper {
+    display: flex;
+}
+
+.trip-details {
+    min-width: 400px;
+}
+
+.trip-map {
+    margin-left: 10px;
+}

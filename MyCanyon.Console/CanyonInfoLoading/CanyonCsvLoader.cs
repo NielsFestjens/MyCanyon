@@ -17,8 +17,8 @@ namespace MyCanyon.Console.CanyonInfoLoading
             {
                 Id = data[0];
                 Name = data[1];
-                CoordX = double.Parse(data[2]);
-                CoordY = double.Parse(data[3]);
+                CoordX = double.Parse(data[2].Replace(".", ","));
+                CoordY = double.Parse(data[3].Replace(".", ","));
             }
 
             public string Id { get; set; }
@@ -29,20 +29,20 @@ namespace MyCanyon.Console.CanyonInfoLoading
 
         public static void WriteCanyonsToCsv(CanyonFetcher.CanyonJsonData canyons, string path)
         {
-            var text = "";
-            foreach (var canyon in canyons.Canyons)
-            {
-                text += $"{canyon.Id},{canyon.Name},{canyon.CoordX},{canyon.CoordY}\r\n";
-            }
+            var canyonInfos = canyons.Canyons.OrderBy(x => x.Id).Select(canyon => (canyon.Id, canyon.Name, canyon.CoordX, canyon.CoordY)).ToList();
+            canyonInfos.AddRange(
+                from commune in canyons.Communes 
+                from canyon in commune.Canyons
+                select (canyon.Id, canyon.Name, canyon.CoordX ?? commune.CoordX, canyon.CoordY ?? commune.CoordY)
+            );
 
-            foreach (var commune in canyons.Communes)
-            {
-                foreach (var canyon in commune.Canyons)
-                {
-                    text += $"{canyon.Id},{canyon.Name},{canyon.CoordX ?? commune.CoordX},{canyon.CoordY ?? commune.CoordY}\r\n";
-                }
-            }
-            File.WriteAllText(path, text);
+            var lines = canyonInfos
+                .GroupBy(x => x.Id).Select(x => x.First())
+                .OrderBy(x => x.Id)
+                .Select(canyon => $"{canyon.Id},{canyon.Name},{canyon.CoordX},{canyon.CoordY}")
+                .ToList();
+
+            File.WriteAllLines(path, lines);
         }
     }
 }

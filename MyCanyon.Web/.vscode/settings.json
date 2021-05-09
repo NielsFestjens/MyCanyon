@@ -1,0 +1,12 @@
+{
+    "files.exclude": {
+        "**/.vscode": true,
+        "**/.gitignore": true,
+        "**/node_modules": true,
+        "**/package-lock.json": true,
+        "**/package.json": true,
+        "**/public": true,
+        "**/README.md": true,
+        "**/tsconfig.json": true
+    }
+}

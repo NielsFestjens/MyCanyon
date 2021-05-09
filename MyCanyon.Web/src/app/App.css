@@ -1,0 +1,44 @@
+html, body, #root {
+    margin: 0;
+    height: 100vh;
+}
+
+a {
+    color: #FFFFFF;
+}
+
+.app {
+    min-height: 100%;
+    background: #404040;
+    font-family: 'Source Sans Pro', sans-serif;
+    color: #FFFFFF;
+}
+
+.content {
+    padding: 1em;
+}
+
+.title {
+    font-size: 2em;
+    display: block;
+    padding-bottom: .5em;
+}
+
+.title-2 {
+    font-size: 1.6em;
+    display: block;
+    padding-top: .5em;
+    padding-bottom: .5em;
+}
+
+ul {
+    margin-block-start: 0;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+input {
+    background-color: #606060;
+}

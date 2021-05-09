@@ -29,15 +29,15 @@ namespace MyCanyon.Console
         {
             var config = new CanyonInfoConfig();
             var canyons = await CanyonInfoLoader.Load(config);
-            var sortedCanyons = canyons.OrderBy(x => x.RouteInfo.Duration).ToList();
+            var sortedCanyons = canyons.OrderBy(x => x?.RouteInfo?.Duration ?? TimeSpan.MaxValue).ToList();
             var text = "id;name;score;distance;duration;hasBook;quotation;rope;approach;descent;return;navette\r\n";
             foreach (var canyonInfo in sortedCanyons)
             {
                 text += $"{canyonInfo.Id};" +
                         $"\"{canyonInfo.Name}\";" +
                         $"{canyonInfo.Description.Score};" +
-                        $"{canyonInfo.RouteInfo.Distance};" +
-                        $"{canyonInfo.RouteInfo.Duration};" +
+                        $"{canyonInfo.RouteInfo?.Distance};" +
+                        $"{canyonInfo.RouteInfo?.Duration};" +
                         $"{canyonInfo.Books.ABookIsOwned};" +
                         $"\"{canyonInfo.Description.Quotation}\";" +
                         $"{canyonInfo.Description.RopeLength};" +

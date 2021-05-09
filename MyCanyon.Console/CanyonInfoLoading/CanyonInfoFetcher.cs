@@ -18,7 +18,7 @@ namespace MyCanyon.Console.CanyonInfoLoading
                     CoordY = canyon.CoordY,
                     Distance = GetDistance(canyon.CoordX, canyon.CoordY, config.CenterX, config.CenterY)
                 })
-                .OrderBy(x => x.Distance)
+                //.OrderBy(x => x.Distance)
                 .Take(config.Amount)
                 .ToList();
 
@@ -30,7 +30,7 @@ namespace MyCanyon.Console.CanyonInfoLoading
                     CoordX = x.CoordX,
                     CoordY = x.CoordY
                 }).ToList();
-                canyon.RouteInfo = CanyonRouteFetcher.FetchCanyonRoute(canyon, config, config.GoogleMapsDistanceApiTemplate, config.RoutePathTemplate).Result;
+                //canyon.RouteInfo = CanyonRouteFetcher.FetchCanyonRoute(canyon, config, config.GoogleMapsDistanceApiTemplate, config.RoutePathTemplate).Result;
                 canyon.Description = CanyonDescriptionFetcher.FetchCanyonDescription(canyon, config.DescentecanyonDescriptionTemplate, config.ResumePathTemplate).Result;
                 canyon.Books = CanyonBooksFetcher.FetchCanyonBooks(canyon, config, config.DescentecanyonBibliographieTemplate, config.BooksPathTemplate).Result;
             });

@@ -21,8 +21,8 @@ namespace MyCanyon.Console.CanyonInfoLoading
             var routeInfo = new CanyonRouteInfo
             {
                 Url = url,
-                Distance = matrix.Rows[0].Elements[0].Distance.Value,
-                Duration = TimeSpan.FromSeconds(matrix.Rows[0].Elements[0].Duration.Value)
+                Distance = matrix.Rows[0].Elements[0].Distance?.Value ?? 0,
+                Duration = TimeSpan.FromSeconds(matrix.Rows[0].Elements[0].Duration?.Value ?? 0)
             };
 
             await File.WriteAllTextAsync(csvPath, JsonConvert.SerializeObject(routeInfo));

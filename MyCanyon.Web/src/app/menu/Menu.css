@@ -1,0 +1,9 @@
+.menu, .menu a {
+    background-color: #808080;
+    padding: .5em;
+}
+
+.menu a {
+    text-decoration: none;
+    padding: 0 1em;
+}

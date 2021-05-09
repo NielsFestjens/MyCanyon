@@ -1,0 +1,11 @@
+.trip-canyon-wrapper {
+    display: flex;
+}
+
+.trip-canyon-details {
+    min-width: 400px;
+}
+
+.trip-canyon-map {
+    margin-left: 10px;
+}
